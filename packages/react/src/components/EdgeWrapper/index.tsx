@@ -36,7 +36,7 @@ export function EdgeWrapper<EdgeType extends Edge = Edge>({
   onError,
   disableKeyboardA11y,
 }: EdgeWrapperProps<EdgeType>): JSX.Element | null {
-  let edge = useStore((s) => s.edgeLookup.get(id)!) as EdgeType;
+  let edge = useStore((s) => s.edgeLookup.get(id)!, shallow) as EdgeType;
   const defaultEdgeOptions = useStore((s) => s.defaultEdgeOptions);
   edge = defaultEdgeOptions ? { ...defaultEdgeOptions, ...edge } : edge;
 
@@ -136,28 +136,28 @@ export function EdgeWrapper<EdgeType extends Edge = Edge>({
 
   const onEdgeDoubleClick = onDoubleClick
     ? (event: React.MouseEvent) => {
-      onDoubleClick(event, { ...edge });
-    }
+        onDoubleClick(event, { ...edge });
+      }
     : undefined;
   const onEdgeContextMenu = onContextMenu
     ? (event: React.MouseEvent) => {
-      onContextMenu(event, { ...edge });
-    }
+        onContextMenu(event, { ...edge });
+      }
     : undefined;
   const onEdgeMouseEnter = onMouseEnter
     ? (event: React.MouseEvent) => {
-      onMouseEnter(event, { ...edge });
-    }
+        onMouseEnter(event, { ...edge });
+      }
     : undefined;
   const onEdgeMouseMove = onMouseMove
     ? (event: React.MouseEvent) => {
-      onMouseMove(event, { ...edge });
-    }
+        onMouseMove(event, { ...edge });
+      }
     : undefined;
   const onEdgeMouseLeave = onMouseLeave
     ? (event: React.MouseEvent) => {
-      onMouseLeave(event, { ...edge });
-    }
+        onMouseLeave(event, { ...edge });
+      }
     : undefined;
 
   const onKeyDown = (event: KeyboardEvent) => {
